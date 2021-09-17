@@ -1107,7 +1107,7 @@ function Calculate(X, Y, Operand) {
 				 return "12"
 			}
 		}
-	} else if (Operand == "subtract") {
+	} else if (Operand == "sub") {
 		if (X == "0") {
 			if (Y == "0") {
 				 return "0"
@@ -1221,7 +1221,7 @@ function Calculate(X, Y, Operand) {
 				 return "0"
 			}
 		}
-	} else if (Operand == "divide") {
+	} else if (Operand == "div") {
 		if (X == "0") {
 			if (Y == "0") {
 				 return "undefined"
@@ -1335,7 +1335,7 @@ function Calculate(X, Y, Operand) {
 				 return "1"
 			}
 		}
-	} else if (Operand == "multiply") {
+	} else if (Operand == "mult") {
 		if (X == "0") {
 			if (Y == "0") {
 				 return "0"
@@ -1955,5 +1955,5 @@ module.exports = {
     Calculate: Calculate,
     Fibonacci: Fibonacci,
     Square: Square,
-	Squareroot: Squareroot
+		Squareroot: Squareroot
 }

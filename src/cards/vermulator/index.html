@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Quick Maths</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="calculator">
+            <div class="calculator_display" id="numpad"></div>
+            <div id="screen" class="calculator_keys">
+                <button class="key-operator" id="Fibonacci" onclick="clicked(this.id)">Fibonace</button>
+                <button class="key-operator" id="Square" onclick="clicked(this.id)">sqare</button>
+                <button class="key-operator" id="Squareroot" onclick="clicked(this.id)">root</button>
+                <button id="AC" onclick="clicked(this.id)">AC</button>
+                <button style="background-color: orange;" id="finish" onclick="clicked(this.id)">=</button>
+            </div>
+        </div>
+        <script>
+            const { ipcRenderer } = require('electron')
+            const numpad = document.getElementById('numpad')
+            ipcRenderer.on('add-number', (_, num) => {
+                numpad.innerHTML += num
+            })
+
+            ipcRenderer.on('clear-number', () => {
+                numpad.innerHTML = ''
+            })
+
+            ipcRenderer.on('remove-number', () => {
+                numpad.innerHTML = numpad.innerHTML.slice(0, -1)
+            })
+
+            const clicked = (id) => {
+                ipcRenderer.send(`method-clicked`, id)
+            }
+        </script>
+    </body>
+</html>
